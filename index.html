@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Airplane Figher</title>
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <link rel="shortcut icon" href="./images/Airplanes/default.png" type="image/png" />
+    </head>
+    <body>
+        <video class="bg-video" autoplay muted loop>
+            <source src="./videos/in_game_video.mp4" />
+        </video>
+        <!-- TITLE -->
+        <div class="game-title">
+            <h1>Airplane Fighter</h1>
+        </div>
+
+        <!-- SELECT MODEL -->
+        <div class="select-airplane">
+            <svg
+                class="left-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                draggable="false"
+                viewBox="0 -960 960 960"
+                width="35"
+                fill="#eee"
+            >
+                <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+            </svg>
+
+            <svg
+                class="right-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                width="35"
+                fill="#eee"
+            >
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+            </svg>
+        </div>
+        <!-- AIRPLANE -->
+        <div class="model">
+            <img src="./images/Airplanes/default.png" draggable="false" />
+        </div>
+
+        <!-- START GAME BUTTON -->
+        <div class="play-button">
+            <button class="playBtn">Play</button>
+        </div>
+
+        <!-- BULLETS -->
+        <div class="bullets-area">
+            <!-- Add on fly -->
+        </div>
+
+        <!-- OBSTACLES -->
+        <div class="obstacles-area" key="uniqueKey">
+            <!-- Add on fly -->
+        </div>
+
+        <!-- LIVE SCORE GAME -->
+        <div class="live-score">
+            <div class="score-icon">
+                <img src="./images/in_game/score_icon.png" draggable="false" alt="" />
+            </div>
+            <div class="score-value">
+                <p id="the-score">Score</p>
+            </div>
+        </div>
+
+        <!-- GAME OVER MENU -->
+        <div class="game-over-menu">
+            <h3 class="menu-title">Game Over</h3>
+
+            <div class="final-score">
+                <img
+                    src="./images/in_game/score_icon.png"
+                    draggable="false"
+                    alt="score-icon"
+                />
+                <p></p>
+            </div>
+            <div>
+                <button class="restart-game-button">Restart</button>
+            </div>
+        </div>
+        <script src="./scripts/main.js"></script>
+    </body>
+</html>
