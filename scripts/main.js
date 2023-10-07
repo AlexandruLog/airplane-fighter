@@ -63,12 +63,12 @@ function setBulletStartPosition(newBullet) {
 
 let moveBulletRequest;
 
-function moveBullet(bullet, posY, i = 0) {
+function moveBullet(bullet, posY) {
     posY -= 12;
     bullet.style.top = posY + "px";
     if (posY > -50) {
         moveBulletRequest = requestAnimationFrame(() => {
-            moveBullet(bullet, posY, i);
+            moveBullet(bullet, posY);
         });
     } else {
         if (bulletsArea.contains(bullet)) {
@@ -115,6 +115,7 @@ let meteorite = [];
 let indx = 0;
 
 function createMeteorites() {
+    console.log(meteorite);
     let newMeteorite = document.createElement("img");
     newMeteorite.src = obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
     newMeteorite.setAttribute("draggable", "false");
@@ -135,9 +136,9 @@ function createMeteorites() {
     let randomSpeed = Math.floor(Math.random() * 11) + 5;
     setMeteoriteStartPosition(newMeteorite, x, y, randomSpeed);
     ++indx;
-    if (meteorite.length == 10) {
-        indx = 0;
-        meteorite = [];
+    if (meteorite.length == 20) {
+        meteorite.splice(0, 10);
+        indx = 10;
     }
 }
 
@@ -156,10 +157,6 @@ function moveMeteorite(newMeteorite, y, randomSpeed) {
         moveMeteoritesRequest = requestAnimationFrame(() => {
             moveMeteorite(newMeteorite, y, randomSpeed);
         });
-    } else {
-        if (!gameOver) {
-            score.textContent = ++scorePoints;
-        }
     }
 
     // AIRPLANE VS METEORITE COLLISION
