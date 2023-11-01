@@ -159,7 +159,7 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    transition: 1.2s;
+    transition: top 1.2s;
 }
 
 .drop-game-over-menu {
@@ -223,14 +223,16 @@ body {
     width: 70%;
     text-align: center;
     color: var(--base-color);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     position: relative;
     top: 1px;
     right: 5px;
 }
 
 .live-score img {
-    width: 34px;
+    width: 30px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .show-live-score {
