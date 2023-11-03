@@ -12,7 +12,6 @@ const THIRTY = 30;
 const HUNDRED = 100;
 let gameOver = false;
 let scorePoints = 0;
-let movementSpeed = 5;
 
 playButton.addEventListener("click", () => {
     document.body.style.cursor = "none";
@@ -119,8 +118,7 @@ let indx = 0;
 
 function createMeteorites() {
     let newMeteorite = document.createElement("img");
-    newMeteorite.src =
-        obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
+    newMeteorite.src = obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
     newMeteorite.setAttribute("draggable", "false");
     newMeteorite.classList.add("meteorite");
     newMeteorite.classList.add("rotate-meteorite");
@@ -136,7 +134,7 @@ function createMeteorites() {
 
     let y = -150; //Start position
     let x = Math.floor(Math.random() * window.innerWidth);
-    let randomSpeed = Math.floor(Math.random() * 13) + 4;
+    let randomSpeed = Math.floor(Math.random() * 14) + 5;
     setMeteoriteStartPosition(newMeteorite, x, y, randomSpeed);
     ++indx;
     if (meteorite.length == 20) {
@@ -183,8 +181,7 @@ function moveMeteorite(newMeteorite, y, randomSpeed) {
         ) {
             localStorage.setItem("highScore", scorePoints);
         }
-        gameOverMenuScore.textContent =
-            "Best Score: " + localStorage.getItem("highScore");
+        gameOverMenuScore.textContent = "Best Score: " + localStorage.getItem("highScore");
         document.body.style.cursor = "default";
         newMeteorite.classList.remove("rotate-meteorite");
         dropGameOverMenu();
