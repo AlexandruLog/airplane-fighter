@@ -1,6 +1,6 @@
 # airplane-fighter
 
-Game implemented using JavaScript language.
+Game implemented using JavaScript language.  
 The user must control an airplane model in order to avoid or destroy enemy objects (meteorites).
 
 • The user can choose an airplane model before the game starts.
