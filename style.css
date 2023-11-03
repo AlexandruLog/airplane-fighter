@@ -132,7 +132,7 @@ body {
 }
 
 .rotate-meteorite {
-    animation: rotateMeteor 5s linear infinite;
+    animation: rotateMeteor 4s linear infinite;
 }
 
 @keyframes rotateMeteor {
@@ -204,6 +204,7 @@ body {
 }
 
 /* LIVE SCORE BOX*/
+
 .live-score {
     width: 100px;
     height: 45px;
