@@ -7,6 +7,9 @@ const playButton = document.querySelector(".playBtn");
 const bulletsArea = document.querySelector(".bullets-area");
 const obstaclesArea = document.querySelector(".obstacles-area");
 const score = document.querySelector("#the-score");
+const TEN = 10;
+const THIRTY = 30;
+const HUNDRED = 100;
 let gameOver = false;
 let scorePoints = 0;
 let movementSpeed = 5;
@@ -84,10 +87,10 @@ function moveBullet(bullet, posY) {
         let bulletRect = bullet.getBoundingClientRect();
         let meteoriteRect = meteorite[i].getBoundingClientRect();
         if (
-            bulletRect.y < meteoriteRect.bottom - 10 &&
-            bulletRect.bottom > meteoriteRect.y + 10 &&
-            bulletRect.x < meteoriteRect.right - 10 &&
-            bulletRect.right > meteoriteRect.x + 10 &&
+            bulletRect.y < meteoriteRect.bottom - TEN &&
+            bulletRect.bottom > meteoriteRect.y + TEN &&
+            bulletRect.x < meteoriteRect.right - TEN &&
+            bulletRect.right > meteoriteRect.x + TEN &&
             bulletRect.y > 0
         ) {
             if (obstaclesArea.contains(meteorite[i])) {
@@ -116,7 +119,8 @@ let indx = 0;
 
 function createMeteorites() {
     let newMeteorite = document.createElement("img");
-    newMeteorite.src = obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
+    newMeteorite.src =
+        obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
     newMeteorite.setAttribute("draggable", "false");
     newMeteorite.classList.add("meteorite");
     newMeteorite.classList.add("rotate-meteorite");
@@ -132,7 +136,7 @@ function createMeteorites() {
 
     let y = -150; //Start position
     let x = Math.floor(Math.random() * window.innerWidth);
-    let randomSpeed = Math.floor(Math.random() * 12) + 3;
+    let randomSpeed = Math.floor(Math.random() * 13) + 4;
     setMeteoriteStartPosition(newMeteorite, x, y, randomSpeed);
     ++indx;
     if (meteorite.length == 20) {
@@ -152,7 +156,7 @@ let moveMeteoritesRequest;
 function moveMeteorite(newMeteorite, y, randomSpeed) {
     y += randomSpeed;
     newMeteorite.style.top = y + "px";
-    if (y < window.innerHeight + 100) {
+    if (y < window.innerHeight + HUNDRED) {
         moveMeteoritesRequest = requestAnimationFrame(() => {
             moveMeteorite(newMeteorite, y, randomSpeed);
         });
@@ -162,10 +166,10 @@ function moveMeteorite(newMeteorite, y, randomSpeed) {
     let airplaneRect = airplane.getBoundingClientRect();
     let obstacleRect = newMeteorite.getBoundingClientRect();
     if (
-        airplaneRect.y < obstacleRect.bottom - 35 &&
-        airplaneRect.right > obstacleRect.x + 30 &&
-        airplaneRect.x < obstacleRect.right - 30 &&
-        airplaneRect.bottom > obstacleRect.y + 35
+        airplaneRect.y < obstacleRect.bottom - THIRTY &&
+        airplaneRect.right > obstacleRect.x + THIRTY &&
+        airplaneRect.x < obstacleRect.right - THIRTY &&
+        airplaneRect.bottom > obstacleRect.y + THIRTY
     ) {
         cancelAnimationFrame(moveMeteoritesRequest);
         clearTimeout(createObstaclesTimeout);
@@ -173,10 +177,14 @@ function moveMeteorite(newMeteorite, y, randomSpeed) {
         document.removeEventListener("click", createBullet);
         newMeteorite.src = "./images/in_game/explosion.png";
         newMeteorite.style.width = "120px";
-        if (scorePoints > parseInt(localStorage.getItem("highScore")) || !localStorage.getItem("highScore")) {
-            localStorage.setItem('highScore', scorePoints);
+        if (
+            scorePoints > parseInt(localStorage.getItem("highScore")) ||
+            !localStorage.getItem("highScore")
+        ) {
+            localStorage.setItem("highScore", scorePoints);
         }
-        gameOverMenuScore.textContent = "Best Score: " + localStorage.getItem('highScore');
+        gameOverMenuScore.textContent =
+            "Best Score: " + localStorage.getItem("highScore");
         document.body.style.cursor = "default";
         newMeteorite.classList.remove("rotate-meteorite");
         dropGameOverMenu();
@@ -249,7 +257,7 @@ function showLiveScore() {
 // AUDIO
 function arrowSound() {
     let sound = new Audio("./audio/select_model.wav");
-    sound.volume = 0.5;
+    sound.volume = 0.4;
     onload = sound.play();
 }
 
