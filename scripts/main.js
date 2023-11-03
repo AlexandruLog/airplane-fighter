@@ -134,7 +134,7 @@ function createMeteorites() {
 
     let y = -150; //Start position
     let x = Math.floor(Math.random() * window.innerWidth);
-    let randomSpeed = Math.floor(Math.random() * 14) + 5;
+    let randomSpeed = Math.floor(Math.random() * 12) + 5;
     setMeteoriteStartPosition(newMeteorite, x, y, randomSpeed);
     ++indx;
     if (meteorite.length == 20) {
