@@ -66,7 +66,7 @@ function setBulletStartPosition(newBullet) {
 let moveBulletRequest;
 
 function moveBullet(bullet, posY) {
-    posY -= 12;
+    posY -= 9;
     bullet.style.top = posY + "px";
     if (posY > -50) {
         moveBulletRequest = requestAnimationFrame(() => {
@@ -118,7 +118,8 @@ let indx = 0;
 
 function createMeteorites() {
     let newMeteorite = document.createElement("img");
-    newMeteorite.src = obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
+    newMeteorite.src =
+        obstacleModels[Math.floor(Math.random() * obstacleModels.length)];
     newMeteorite.setAttribute("draggable", "false");
     newMeteorite.classList.add("meteorite");
     newMeteorite.classList.add("rotate-meteorite");
@@ -134,7 +135,7 @@ function createMeteorites() {
 
     let y = -250; //Start position
     let x = Math.floor(Math.random() * window.innerWidth);
-    let randomSpeed = Math.floor(Math.random() * 12) + 5;
+    let randomSpeed = Math.floor(Math.random() * 3) + 5;
     setMeteoriteStartPosition(newMeteorite, x, y, randomSpeed);
     ++indx;
     if (meteorite.length == 20) {
@@ -176,12 +177,13 @@ function moveMeteorite(newMeteorite, y, randomSpeed) {
         newMeteorite.src = "./images/in_game/explosion.png";
         newMeteorite.style.width = "120px";
         if (
-            scorePoints > parseInt(localStorage.getItem("highScore")) ||
-            !localStorage.getItem("highScore")
+            scorePoints > parseInt(sessionStorage.getItem("highScore")) ||
+            !sessionStorage.getItem("highScore")
         ) {
-            localStorage.setItem("highScore", scorePoints);
+            sessionStorage.setItem("highScore", scorePoints);
         }
-        gameOverMenuScore.textContent = "Best Score: " + localStorage.getItem("highScore");
+        gameOverMenuScore.textContent =
+            "Best Score: " + sessionStorage.getItem("highScore");
         document.body.style.cursor = "default";
         newMeteorite.classList.remove("rotate-meteorite");
         dropGameOverMenu();
