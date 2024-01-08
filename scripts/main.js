@@ -22,7 +22,7 @@ playButton.addEventListener("click", () => {
         document.addEventListener("click", createBullet);
         setObstacles();
     }, 2000);
-
+    document.documentElement.requestFullscreen();
     showLiveScore();
     startSound();
 });
